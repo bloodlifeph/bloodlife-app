@@ -12,13 +12,13 @@ const Styles = StyleSheet.create({
         height: 150
     },
     instructionText: {
-        color: '#b20000',
+        color: '#ff6666',
         margin: 20
     },
     textInput : {
         marginBottom: 5,
         padding: 5,
-        color: '#4c0000',
+        color: '#ff6666',
         borderBottomColor: '#ffe5e5', 
         borderBottomWidth: 1
     }

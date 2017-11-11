@@ -8,7 +8,10 @@ export default class App extends React.Component {
     super(props)
     this.sendInquiry = this.sendInquiry.bind(this)
     this.state = {
-      bloodType: 'O+'
+      bloodType: 'Blood Type Needed',
+      city: 'Nearest City',
+      name: "Inquirer / Patient's name",
+      contactNumber: "Contact Number"
     }
   }
 
@@ -32,6 +35,30 @@ export default class App extends React.Component {
               })
             }}
             value={this.state.bloodType}
+          />
+          <TextInput style={Styles.textInput}
+            onChangeText={(city) => {
+              this.setState({
+                city: city
+              })
+            }}
+            value={this.state.city}
+          />
+          <TextInput style={Styles.textInput}
+            onChangeText={(name) => {
+              this.setState({
+                name: name
+              })
+            }}
+            value={this.state.name}
+          />
+          <TextInput style={Styles.textInput}
+            onChangeText={(contactNumber) => {
+              this.setState({
+                contactNumber: contactNumber
+              })
+            }}
+            value={this.state.contactNumber}
           />
         </View>
       </KeyboardAvoidingView>
