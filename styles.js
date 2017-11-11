@@ -6,6 +6,14 @@ const Styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    logo: {
+        width: 150,
+        height: 150
+    },
+    instructionText: {
+        color: '#b20000',
+        margin: 20
     }
 });
 

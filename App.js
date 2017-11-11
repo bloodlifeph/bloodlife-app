@@ -19,7 +19,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={Styles.container}>
-        <Image style={{ width:150, height:150, marginBottom: 30 }} source={require('./assets/logo.png')} />
+        <Image style={Styles.logo} source={require('./assets/logo.png')} />
+        <Text style={Styles.instructionText}>Please choose the blood type that you are looking for and provide your contact details. Your inquiry will be broadcasted to the kind hearted blood donors.</Text>
         <Text>Yo!</Text>
       </View>
     );
