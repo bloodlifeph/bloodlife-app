@@ -1,6 +1,6 @@
 import React from 'react';
 import Styles from './styles'
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, TextInput, View, Image } from 'react-native';
 
 export default class App extends React.Component {
 
@@ -16,15 +16,12 @@ export default class App extends React.Component {
   }
 
   sendInquiry() {
-
+    //do a POST for broadcast
   }
 
   render() {
     return (
-      <KeyboardAvoidingView
-        style={Styles.container}
-        behavior="padding"
-      >
+      <KeyboardAvoidingView style={Styles.container} behavior="padding" >
         <Image style={Styles.logo} source={require('./assets/logo.png')} />
         <Text style={Styles.instructionText}>Please choose the blood type that you are looking for and provide your contact details. Your inquiry will be broadcasted to the kind hearted blood donors.</Text>
         <View style={{ width: 310 }}>
@@ -60,6 +57,14 @@ export default class App extends React.Component {
             }}
             value={this.state.contactNumber}
           />
+        </View>
+        <View style={{ width: 310 }}>
+          <TouchableHighlight
+            style={Styles.submit}
+            onPress={() => this.sendInquiry(this.props)}
+            underlayColor='#ff9999'>
+            <Text style={[Styles.submitText]}>Inquire</Text>
+          </TouchableHighlight>
         </View>
       </KeyboardAvoidingView>
     );
