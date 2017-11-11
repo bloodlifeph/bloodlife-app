@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Styles from './styles'
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class App extends React.Component {
 
@@ -12,15 +13,13 @@ export default class App extends React.Component {
   }
 
   sendInquiry() {
-    
+
   }
 
   render() {
     return (
-      <View style={{flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'}}>
+      <View style={Styles.container}>
+        <Image style={{ width:150, height:150, marginBottom: 30 }} source={require('./assets/logo.png')} />
         <Text>Yo!</Text>
       </View>
     );
