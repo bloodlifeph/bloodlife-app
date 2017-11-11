@@ -1,6 +1,6 @@
 import React from 'react';
 import Styles from './styles'
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, View, Image } from 'react-native';
 
 export default class App extends React.Component {
 
@@ -8,7 +8,7 @@ export default class App extends React.Component {
     super(props)
     this.sendInquiry = this.sendInquiry.bind(this)
     this.state = {
-      bloodType: ''
+      bloodType: 'O+'
     }
   }
 
@@ -18,11 +18,23 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={Styles.container}>
+      <KeyboardAvoidingView
+        style={Styles.container}
+        behavior="padding"
+      >
         <Image style={Styles.logo} source={require('./assets/logo.png')} />
         <Text style={Styles.instructionText}>Please choose the blood type that you are looking for and provide your contact details. Your inquiry will be broadcasted to the kind hearted blood donors.</Text>
-        <Text>Yo!</Text>
-      </View>
+        <View style={{ width: 310 }}>
+          <TextInput style={Styles.textInput}
+            onChangeText={(bloodType) => {
+              this.setState({
+                bloodType: bloodType
+              })
+            }}
+            value={this.state.bloodType}
+          />
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }

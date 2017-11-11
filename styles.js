@@ -14,6 +14,13 @@ const Styles = StyleSheet.create({
     instructionText: {
         color: '#b20000',
         margin: 20
+    },
+    textInput : {
+        marginBottom: 5,
+        padding: 5,
+        color: '#4c0000',
+        borderBottomColor: '#ffe5e5', 
+        borderBottomWidth: 1
     }
 });
 
