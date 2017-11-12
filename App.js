@@ -1,6 +1,6 @@
 import React from 'react';
 import Styles from './styles'
-import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, TextInput, View, Image, Picker, Dimensions } from 'react-native';
+import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, TextInput, View, Image, Picker, Dimensions, Platform } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class App extends React.Component {
@@ -8,6 +8,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.sendInquiry = this.sendInquiry.bind(this)
+    this.renderBasedOnPlatform = this.renderBasedOnPlatform.bind(this)
     this.state = {
       bloodType: 'Blood Type Needed',
       city: 'Nearest City',
@@ -15,6 +16,15 @@ export default class App extends React.Component {
       contactNumber: "Contact Number",
       showPickers: true
     }
+  }
+
+  renderBasedOnPlatform(flex) {
+    if (Platform.OS === 'ios') {
+      return { flex: flex, marginTop: -60 }
+    } else {
+      return { flex: flex }
+    }
+
   }
 
   sendInquiry() {
@@ -28,8 +38,8 @@ export default class App extends React.Component {
         <Text style={Styles.instructionText}>Please choose the blood type that you are looking for and provide your contact details. Your inquiry will be broadcasted to the kind hearted blood donors.</Text>
 
         {this.state.showPickers &&
-          <View style={{ flex: 1, flexDirection: 'row', width: SCREEN_WIDTH - 50 }}>
-            <View style={{ flex: 1, marginTop: -60 }}>
+          <View style={Styles.containerPicker}>
+            <View style={this.renderBasedOnPlatform(1)}>
               <Picker
                 mode="dropdown"
                 color='blue'
@@ -46,7 +56,7 @@ export default class App extends React.Component {
                 <Picker.Item label="ANY" value="ANY" />
               </Picker>
             </View>
-            <View style={{ flex: 2, marginTop: -60 }} >
+            <View style={this.renderBasedOnPlatform(2)} >
               <Picker
                 selectedValue={this.state.city}
                 onValueChange={(itemValue, itemIndex) => this.setState({ city: itemValue })}>
