@@ -14,8 +14,14 @@ const Styles = StyleSheet.create({
         width: 100,
         height: 100
     },
+    containerPicker: { 
+        flex: 1, 
+        flexDirection: 'row', 
+        width: SCREEN_WIDTH - 50 
+    },
     containerFormText: {
-        flex: 1, width: SCREEN_WIDTH - 50
+        flex: 1, 
+        width: SCREEN_WIDTH - 50
     },
     instructionText: {
         color: '#ff6666',
