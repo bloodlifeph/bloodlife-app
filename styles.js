@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const Styles = StyleSheet.create({
     container: {
@@ -8,8 +10,12 @@ const Styles = StyleSheet.create({
         justifyContent: 'center',
     },
     logo: {
-        width: 150,
-        height: 150
+        marginTop: 60,
+        width: 100,
+        height: 100
+    },
+    containerFormText: {
+        flex: 1, width: SCREEN_WIDTH - 50
     },
     instructionText: {
         color: '#ff6666',
@@ -23,10 +29,8 @@ const Styles = StyleSheet.create({
         borderBottomWidth: 1
     },
     submit: {
-        width: 200,
-        marginRight: 60,
-        marginLeft: 60,
-        marginTop: 50,
+        width: SCREEN_WIDTH - 50,
+        marginBottom: 10,
         paddingTop: 20,
         paddingBottom: 20,
         backgroundColor: '#fff',
