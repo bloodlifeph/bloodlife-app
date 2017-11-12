@@ -16,7 +16,7 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 ### Clone
 ```
-git clone https://github.com/xtrycatchx/bloodlife-app.git
+git clone https://github.com/bloodlifeph/bloodlife-app.git
 cd bloodlife-app
 ```
 ### Install dependencies
