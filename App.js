@@ -1,7 +1,7 @@
 import React from 'react';
 import Styles from './styles'
-import MyTextInput from './MyTextInput'
-import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, TextInput, View, Image, Picker, Dimensions, Platform } from 'react-native';
+import TextInput from './TextInput'
+import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, View, Image, Picker, Dimensions, Platform } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class App extends React.Component {
@@ -99,8 +99,8 @@ export default class App extends React.Component {
 
         <View style={[Styles.containerFormText, { marginTop: 50 }]}>
 
-          <MyTextInput placeHolder={this.state.name} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.name} />
-          <MyTextInput placeHolder={this.state.contactNumber} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.contactNumber} />
+          <TextInput placeHolder={this.state.name} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.name} />
+          <TextInput placeHolder={this.state.contactNumber} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.contactNumber} />
 
         </View>
         {this.state.showPickers &&
