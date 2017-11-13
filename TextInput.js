@@ -1,15 +1,23 @@
 import React from 'react';
 import Styles from './styles'
-import ReactNative, { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, View, Image, Picker, Dimensions, Platform } from 'react-native';
-const SCREEN_WIDTH = Dimensions.get('window').width;
+import ReactNative from 'react-native';
 
 export default class TextInput extends React.Component {
 
   constructor(props) {
     super(props)
+    this.checkPlaceHolder = this.checkPlaceHolder.bind(this)
     this.state = {
       placeHolder: props.placeHolder,
       value: props.value
+    }
+  }
+
+  checkPlaceHolder() {
+    if (this.state.value === '') {
+      this.setState({
+        value: this.state.placeHolder
+      })
     }
   }
   render() {
@@ -20,13 +28,15 @@ export default class TextInput extends React.Component {
         }}
         onBlur={() => {
           this.props.showPickers();
+          this.checkPlaceHolder();
         }}
         onChangeText={(name) => {
           this.setState({
-            value: value
+            value: name
           })
+          this.props.updateValue(name);
         }}
-        value={this.state.placeHolder}
+        value={this.state.value}
       />
     );
   }
