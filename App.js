@@ -4,21 +4,47 @@ import TextInput from './TextInput'
 import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, View, Image, Picker, Dimensions, Platform } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
+//TODO ibalhin ni later
+const bloodTypes = [
+  "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "ANY"
+]
+
+//TODO ibalhin ni later
+const cities = [
+  "Antipolo", "Agoo City", "Bacolod City", "Baguio", "Cagayan de Oro", "Caloocan", "Cebu City", "Dagupan City",
+  "Davao City", "Lapu-lapu City", "Manila", "Pasig", "Quezon City", "San Fernando City", "Taguig", "Tacloban",
+  "Tagbiliran", "Zamboanga City"
+]
+
 export default class App extends React.Component {
 
   constructor(props) {
     super(props)
     this.sendInquiry = this.sendInquiry.bind(this)
     this.renderBasedOnPlatform = this.renderBasedOnPlatform.bind(this)
+    this.updateName = this.updateName.bind(this)
+    this.updateContactNumber = this.updateContactNumber.bind(this)
     this.hidePickers = this.hidePickers.bind(this)
     this.showPickers = this.showPickers.bind(this)
     this.state = {
-      bloodType: 'Blood Type Needed',
+      bloodType: bloodTypes[0],
       city: 'Nearest City',
       name: "Inquirer / Patient's name",
       contactNumber: "Contact Number",
       showPickers: true
     }
+  }
+
+  updateName(name) {
+    this.setState({
+      name: name
+    });
+  }
+
+  updateContactNumber(contactNumber) {
+    this.setState({
+      contactNumber: contactNumber
+    });
   }
 
   hidePickers() {
@@ -35,7 +61,6 @@ export default class App extends React.Component {
     } else {
       return { flex: flex }
     }
-
   }
 
   sendInquiry() {
@@ -53,43 +78,28 @@ export default class App extends React.Component {
             <View style={this.renderBasedOnPlatform(1)}>
               <Picker
                 mode="dropdown"
-                color='blue'
+                itemStyle={{ color: '#ff6666' }}
                 selectedValue={this.state.bloodType}
-                onValueChange={(itemValue, itemIndex) => this.setState({ bloodType: itemValue })}>
-                <Picker.Item label="O+" value="O+" />
-                <Picker.Item label="O-" value="O-" />
-                <Picker.Item label="A+" value="A+" />
-                <Picker.Item label="A-" value="A-" />
-                <Picker.Item label="B+" value="B+" />
-                <Picker.Item label="B-" value="B-" />
-                <Picker.Item label="AB+" value="AB+" />
-                <Picker.Item label="AB-" value="AB-" />
-                <Picker.Item label="ANY" value="ANY" />
+                onValueChange={(itemValue, idx) => { this.setState({ bloodType: itemValue }); console.log(this.state); }}>
+
+                {bloodTypes.map((s, i) => {
+                  return <Picker.Item key={i} value={s} label={s} />
+                })}
+
               </Picker>
             </View>
             <View style={this.renderBasedOnPlatform(2)} >
               <Picker
+                mode="dropdown"
+                itemStyle={{ color: '#ff6666' }}
                 selectedValue={this.state.city}
                 onValueChange={(itemValue, itemIndex) => this.setState({ city: itemValue })}>
 
-                <Picker.Item label="Antipolo" value="Antipolo" />
-                <Picker.Item label="Agoo City" value="Agoo City" />
-                <Picker.Item label="Bacolod City" value="Bacolod City" />
-                <Picker.Item label="Baguio" value="Baguio" />
-                <Picker.Item label="Cagayan de Oro" value="Cagayan de Oro" />
-                <Picker.Item label="Caloocan" value="Caloocan" />
-                <Picker.Item label="Cebu City" value="Cebu City" />
-                <Picker.Item label="Dagupan City" value="Dagupan City" />
-                <Picker.Item label="Davao City" value="Davao City" />
-                <Picker.Item label="Lapu-lapu City" value="Lapu-lapu City" />
-                <Picker.Item label="Manila" value="Manila" />
-                <Picker.Item label="Pasig" value="Pasig" />
-                <Picker.Item label="Quezon City" value="Quezon City" />
-                <Picker.Item label="San Fernando City" value="San Fernando City" />
-                <Picker.Item label="Taguig" value="Taguig" />
-                <Picker.Item label="Tacloban" value="Tacloban City" />
-                <Picker.Item label="Tagbiliran" value="Tagbilaran City" />
-                <Picker.Item label="Zamboanga City" value="Zamboanga City" />
+                {cities.map((s, i) => {
+                  return <Picker.Item key={i} value={s} label={s} />
+                })}
+
+
               </Picker>
             </View>
           </View>
@@ -99,8 +109,19 @@ export default class App extends React.Component {
 
         <View style={[Styles.containerFormText, { marginTop: 50 }]}>
 
-          <TextInput placeHolder={this.state.name} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.name} />
-          <TextInput placeHolder={this.state.contactNumber} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.contactNumber} />
+          <TextInput
+            placeHolder={this.state.name}
+            showPickers={this.showPickers}
+            hidePickers={this.hidePickers}
+            value={this.state.name}
+            updateValue={this.updateName} />
+
+          <TextInput
+            placeHolder={this.state.contactNumber}
+            showPickers={this.showPickers}
+            hidePickers={this.hidePickers}
+            value={this.state.contactNumber}
+            updateValue={this.updateContactNumber} />
 
         </View>
         {this.state.showPickers &&
