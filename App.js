@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from './styles'
+import MyTextInput from './MyTextInput'
 import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, TextInput, View, Image, Picker, Dimensions, Platform } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -9,6 +10,8 @@ export default class App extends React.Component {
     super(props)
     this.sendInquiry = this.sendInquiry.bind(this)
     this.renderBasedOnPlatform = this.renderBasedOnPlatform.bind(this)
+    this.hidePickers = this.hidePickers.bind(this)
+    this.showPickers = this.showPickers.bind(this)
     this.state = {
       bloodType: 'Blood Type Needed',
       city: 'Nearest City',
@@ -16,6 +19,14 @@ export default class App extends React.Component {
       contactNumber: "Contact Number",
       showPickers: true
     }
+  }
+
+  hidePickers() {
+    this.setState({ showPickers: false })
+  }
+
+  showPickers() {
+    this.setState({ showPickers: true })
   }
 
   renderBasedOnPlatform(flex) {
@@ -88,34 +99,9 @@ export default class App extends React.Component {
 
         <View style={[Styles.containerFormText, { marginTop: 50 }]}>
 
-          <TextInput style={Styles.textInput}
-            onFocus={() => {
-              this.setState({ showPickers: false })
-            }}
-            onBlur={() => {
-              this.setState({ showPickers: true })
-            }}
-            onChangeText={(name) => {
-              this.setState({
-                name: name
-              })
-            }}
-            value={this.state.name}
-          />
-          <TextInput style={Styles.textInput}
-            onFocus={() => {
-              this.setState({ showPickers: false })
-            }}
-            onBlur={() => {
-              this.setState({ showPickers: true })
-            }}
-            onChangeText={(contactNumber) => {
-              this.setState({
-                contactNumber: contactNumber
-              })
-            }}
-            value={this.state.contactNumber}
-          />
+          <MyTextInput placeHolder={this.state.name} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.name} />
+          <MyTextInput placeHolder={this.state.contactNumber} showPickers={this.showPickers} hidePickers={this.hidePickers} value={this.state.contactNumber} />
+
         </View>
         {this.state.showPickers &&
           <View style={Styles.container}>
@@ -123,7 +109,7 @@ export default class App extends React.Component {
               style={Styles.submit}
               onPress={() => this.sendInquiry(this.props)}
               underlayColor='#ff9999'>
-              <Text style={[Styles.submitText]}>Inquire</Text>
+              <Text style={[Styles.submitText]}>Send Inquiry</Text>
             </TouchableHighlight>
           </View>
         }
