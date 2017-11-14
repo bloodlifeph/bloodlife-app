@@ -25,15 +25,11 @@ export default class App extends React.Component {
   }
 
   updateName(name) {
-    this.setState({
-      name: name
-    });
+    this.setState({ name: name });
   }
 
   updateContactNumber(contactNumber) {
-    this.setState({
-      contactNumber: contactNumber
-    });
+    this.setState({ contactNumber: contactNumber });
   }
 
   hidePickers() {
