@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from './styles'
+import Cities from './cities'
 import TextInput from './TextInput'
 import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, View, Image, Picker, Dimensions, Platform } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -7,13 +8,6 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 //TODO ibalhin ni later
 const bloodTypes = [
   "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "ANY"
-]
-
-//TODO ibalhin ni later
-const cities = [
-  "Antipolo", "Agoo City", "Bacolod City", "Baguio", "Cagayan de Oro", "Caloocan", "Cebu City", "Dagupan City",
-  "Davao City", "Lapu-lapu City", "Manila", "Pasig", "Quezon City", "San Fernando City", "Taguig", "Tacloban",
-  "Tagbiliran", "Zamboanga City"
 ]
 
 export default class App extends React.Component {
@@ -95,7 +89,7 @@ export default class App extends React.Component {
                 selectedValue={this.state.city}
                 onValueChange={(itemValue, itemIndex) => this.setState({ city: itemValue })}>
 
-                {cities.map((s, i) => {
+                {Cities.map((s, i) => {
                   return <Picker.Item key={i} value={s} label={s} />
                 })}
 
