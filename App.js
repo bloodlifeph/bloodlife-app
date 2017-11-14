@@ -1,9 +1,9 @@
 import React from 'react';
-import Styles from './styles'
-import Cities from './cities'
-import BloodTypes from './bloodTypes'
-import TextInput from './TextInput'
-import { KeyboardAvoidingView, TouchableHighlight, StyleSheet, Text, View, Image, Picker, Dimensions, Platform } from 'react-native';
+import Styles from './styles';
+import Cities from './cities';
+import BloodTypes from './bloodTypes';
+import TextInput from './TextInput';
+import { KeyboardAvoidingView, TouchableHighlight, Text, View, Image, Picker, Dimensions, Platform } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class App extends React.Component {
