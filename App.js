@@ -40,7 +40,7 @@ export default class App extends React.Component {
     this.setState({ showPickers: true })
   }
 
-  renderBasedOnPlatform(flex) {
+  renderBasedOnPlatform = (flex) => {
     if (Platform.OS === 'ios') {
       return { flex: flex, marginTop: -60 }
     } else {
