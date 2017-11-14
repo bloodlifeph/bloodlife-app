@@ -24,7 +24,7 @@ export default class App extends React.Component {
     }
   }
 
-  updateName(name) {
+  updateName = (name) => {
     this.setState({ name: name });
   }
 
@@ -48,7 +48,7 @@ export default class App extends React.Component {
     }
   }
 
-  sendInquiry() {
+  sendInquiry = () => {
     //do a POST for broadcast
   }
 
