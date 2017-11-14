@@ -13,7 +13,7 @@ export default class TextInput extends React.Component {
     }
   }
 
-  checkPlaceHolder() {
+  checkPlaceHolder = () => {
     if (this.state.value === '') {
       this.setState({
         value: this.state.placeHolder
