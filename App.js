@@ -52,7 +52,7 @@ export default class App extends React.Component {
     //do a POST for broadcast
   }
 
-  render() {
+  render = () => {
     return (
       <KeyboardAvoidingView style={Styles.container} behavior="padding" >
         <Image style={Styles.logo} source={require('./assets/logo.png')} />
