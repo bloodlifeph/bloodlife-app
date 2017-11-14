@@ -28,7 +28,7 @@ export default class App extends React.Component {
     this.setState({ name: name });
   }
 
-  updateContactNumber(contactNumber) {
+  updateContactNumber = (contactNumber) => {
     this.setState({ contactNumber: contactNumber });
   }
 
