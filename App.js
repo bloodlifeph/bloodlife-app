@@ -65,7 +65,7 @@ export default class App extends React.Component {
                 mode="dropdown"
                 itemStyle={{ color: '#ff6666' }}
                 selectedValue={this.state.bloodType}
-                onValueChange={(itemValue, idx) => { this.setState({ bloodType: itemValue }); console.log(this.state); }}>
+                onValueChange={(itemValue, idx) => { this.setState({ bloodType: itemValue }); }}>
 
                 {BloodTypes.map((s, i) => {
                   return <Picker.Item key={i} value={s} label={s} />
