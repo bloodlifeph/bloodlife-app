@@ -16,7 +16,7 @@ export default class App extends React.Component {
     this.hidePickers = this.hidePickers.bind(this)
     this.showPickers = this.showPickers.bind(this)
     this.state = {
-      bloodType: bloodTypes[0],
+      bloodType: BloodTypes[0],
       city: 'Nearest City',
       name: "Inquirer / Patient's name",
       contactNumber: "Contact Number",
@@ -67,7 +67,7 @@ export default class App extends React.Component {
                 selectedValue={this.state.bloodType}
                 onValueChange={(itemValue, idx) => { this.setState({ bloodType: itemValue }); console.log(this.state); }}>
 
-                {bloodTypes.map((s, i) => {
+                {BloodTypes.map((s, i) => {
                   return <Picker.Item key={i} value={s} label={s} />
                 })}
 
