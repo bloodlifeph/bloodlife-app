@@ -36,7 +36,7 @@ export default class App extends React.Component {
     this.setState({ showPickers: false })
   }
 
-  showPickers() {
+  showPickers = () => {
     this.setState({ showPickers: true })
   }
 
