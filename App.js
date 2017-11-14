@@ -3,7 +3,7 @@ import Styles from './styles';
 import Cities from './cities';
 import BloodTypes from './bloodTypes';
 import TextInput from './TextInput';
-import { KeyboardAvoidingView, TouchableHighlight, Text, View, Image, Picker, Dimensions, Platform } from 'react-native';
+import { KeyboardAvoidingView, TouchableHighlight, Text, View, Image, Picker, Platform } from 'react-native';
 
 export default class App extends React.Component {
 
