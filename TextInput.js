@@ -7,6 +7,7 @@ export default class TextInput extends React.Component {
   constructor(props) {
     super(props)
     this.checkPlaceHolder = this.checkPlaceHolder.bind(this)
+    this.emptyIfDefaultPlaceHolder = this.emptyIfDefaultPlaceHolder.bind(this)
     this.state = {
       placeHolder: props.placeHolder,
       value: props.value
@@ -20,12 +21,19 @@ export default class TextInput extends React.Component {
       this.setState({ value: this.state.placeHolder })
     }
   }
-  
+
+  emptyIfDefaultPlaceHolder = () => {
+    if (this.state.placeHolder === this.state.value) {
+      this.setState({ value: '' })
+    }
+  }
+
   render() {
     return (
       <ReactNative.TextInput style={Styles.textInput}
         onFocus={() => {
           this.props.hidePickers();
+          this.emptyIfDefaultPlaceHolder();
         }}
         onBlur={() => {
           this.props.showPickers();
