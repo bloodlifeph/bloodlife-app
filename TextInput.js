@@ -14,12 +14,13 @@ export default class TextInput extends React.Component {
   }
 
   checkPlaceHolder = () => {
-    if (this.state.value === '') {
-      this.setState({
-        value: this.state.placeHolder
-      })
+    if (this.state.value === '' ||
+      this.state.value.indexOf(this.state.placeHolder) !== -1 ||
+      this.state.placeHolder.indexOf(this.state.value) !== -1) {
+      this.setState({ value: this.state.placeHolder })
     }
   }
+  
   render() {
     return (
       <ReactNative.TextInput style={Styles.textInput}
