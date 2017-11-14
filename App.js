@@ -32,7 +32,7 @@ export default class App extends React.Component {
     this.setState({ contactNumber: contactNumber });
   }
 
-  hidePickers() {
+  hidePickers = () => {
     this.setState({ showPickers: false })
   }
 
