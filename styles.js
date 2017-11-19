@@ -47,6 +47,9 @@ const Styles = StyleSheet.create({
     submitText: {
         color: '#ff6666',
         textAlign: 'center',
+    },
+    pickerItemStyle: { 
+        color: '#ff6666' 
     }
 });
 
