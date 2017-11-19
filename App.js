@@ -17,28 +17,20 @@ export default class App extends React.Component {
     this.showPickers = this.showPickers.bind(this)
     this.state = {
       bloodType: BloodTypes[0],
-      city: 'Nearest City',
+      city: "Nearest City",
       name: "Inquirer / Patient's name",
       contactNumber: "Contact Number",
       showPickers: true
     }
   }
 
-  updateName = name => {
-    this.setState({ name: name });
-  }
+  updateName = name => this.setState({ name: name });
 
-  updateContactNumber = contactNumber => {
-    this.setState({ contactNumber: contactNumber });
-  }
+  updateContactNumber = contactNumber => this.setState({ contactNumber: contactNumber });
 
-  hidePickers = () => {
-    this.setState({ showPickers: false })
-  }
+  hidePickers = () => this.setState({ showPickers: false });
 
-  showPickers = () => {
-    this.setState({ showPickers: true })
-  }
+  showPickers = () => this.setState({ showPickers: true });
 
   renderBasedOnPlatform = flex => {
     if (Platform.OS === 'ios') {
@@ -62,8 +54,8 @@ export default class App extends React.Component {
           <View style={Styles.containerPicker}>
             <View style={this.renderBasedOnPlatform(1)}>
               <Picker
-                mode="dropdown"
-                itemStyle={{ color: '#ff6666' }}
+                mode='dropdown'
+                itemStyle={Styles.pickerItemStyle}
                 selectedValue={this.state.bloodType}
                 onValueChange={(itemValue, idx) => { this.setState({ bloodType: itemValue }); }}>
 
@@ -75,15 +67,14 @@ export default class App extends React.Component {
             </View>
             <View style={this.renderBasedOnPlatform(2)} >
               <Picker
-                mode="dropdown"
-                itemStyle={{ color: '#ff6666' }}
+                mode='dropdown'
+                itemStyle={Styles.pickerItemStyle}
                 selectedValue={this.state.city}
                 onValueChange={(itemValue, itemIndex) => this.setState({ city: itemValue })}>
 
                 {Cities.map((s, i) => {
                   return <Picker.Item key={i} value={s} label={s} />
                 })}
-
 
               </Picker>
             </View>
